@@ -1,0 +1,63 @@
+	- Mobile device pcapng file | Finding the severity level of the attack using expert info analysis
+		○ Open the pcap file
+		○ Go to analysis and choose expert insights and find the severity
+
+	- Mobile Finding the KEYCODE-75 used in the employees mobile phone
+		○ Find phonesploit
+			§ Navigate to /home/attacker/PhoneSploit
+			§ Python3 phonesploit.py
+		○ Find the ip of the mobile using nmap scan
+			§ nmap -p 5555 172.16.0.0/24
+		○ p- for moving to the next page 
+		○ Choose keycode 75 find the corresponding value
+	- Mobile Finding the saved information from downloads'
+		○ Connect via adb
+			§ Adb shell
+			§ If there is no device scan and find the ip and add it via phonesploit
+		○ Su root 
+		○ Now cd /sdcard/downloads and find the txt file
+		○ Cat the file and get the information
+	- Mobile Finding the ip address from the screenshot
+		○ Adb shell - to connect to the phone
+		○ Su rot - to switch to the root
+		○ Cd /sdcard/DCIM
+		○ Find the exact path of the file
+		○ Type exit to exit the ADB shell
+		○ Now adb pull /sdcard/DCIM/capture.png /home/attacker/Desktop/
+		○ Now open from our desktop and find the answer 
+	- Analysing the apk for permissions
+		○ https://sisik.eu/apk-tool
+		○ Drag and drop the apk to this site
+	- To get the IOT traffic in pcapng 
+		○ Filter mqtt
+		○ Expand MQ Telemetry Transport Protocol  to get the topic
+
+
+	- Hash comparing to see what file has been changed
+		○ Go to e drive and search for Hashcalc
+		○ Install it
+		○ Upload and calculate the md5 hashes and compare
+	
+	- Decoding an encoded text 
+		○ BCTextEncoder
+		○ Open the .txt file and enter the password
+	
+	- Decrypting AES encryption
+		○ AES tool
+		○ Enter password and decrypt
+	- Finding the number of files in volume file
+		○ Use VeraCrypt
+		○ In that select the volume file 
+		○ Select any drive and press mount
+		○ Enter the password
+		○ Now open the drive and count
+		
+	- Using Cryp tool for decryption cryptanalysis
+		○ Open the encoded file
+		○ Analysie the file name
+		○ Choose the algorithm
+		○ Enter the keylength from the name (06060606060606606)
+		○ decrypt
+		
+		
+	
