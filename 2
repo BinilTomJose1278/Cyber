@@ -1,0 +1,48 @@
+	- Cracking hashes
+		○ NTLM hashes using Hashcat
+			§ john --format=NT hashes.txt
+	- Server password auditing
+		○ Lophtcrack
+			§ C->programfiles->Lophtcrack
+			§ Run it
+			§ Password Auditing Wizard –> next –> next –> A remote machine –> Host(10.10.10.25) –> Use Specifc User Credentials –> Username(Administrator),Password(CSCPa$$) –> next –> ~~~ –> finish
+	- Extracting hidden informatrion in windows
+		○ Snow (Text based steganography tool)
+			§ E->CEH tools-> Search SNOW
+			§ SNOW.EXE -C "C:\Users\Administrator\Documents\Confidential.txt"
+			§ If the terminal is opened as powershell type "cmd" to change it to command prmpt and then run snow
+		○ OpenSteg ( Image based stegnography) (Probably a .bmp file)
+			§ E->CEH Tools->Search Open Steg -> install by double clicking
+			§ Open and select the input image and output folder and check the output 
+	- Analyzimg pcap files via wireshark
+		○ Identifying the message send via COVERT TCP using ip ID
+			§  Convert_tcp, wireshark - > Statistics - > Conversations - > TCP 16 - > select port 8888 9999, right click - > Apply as Filter - > A -> B, then observe the text changes below
+		○ suspects a possible sniffing attack on a machine in its network
+			§ ARP Packets Duplicate Ip address
+		○ Getting the id using wireshark 
+			§ Open the pcap file find the id from the wireshark
+		○ Application sends data through plain text 
+			§ Open the pcap file filter http find the form elaboarte and will get the username and password
+			§ Filter http.request.method==POST, because we need to find the account and password for logging into the website.
+		○ Finding the data length of udp packet ]
+			§ Open the pcap file and find the length
+		○ Finding the ip address from which Dos has happened
+			§ Open the pcap file 
+				□ Navigate to statistics-> Endpoints -> Check
+	-  Analyzing the malware and find out the File pos for KERNEL32.dll text
+		○ BinText 3.0.3
+			§ Use BinText to open it and search for KERNELL32.dll
+	- Analyze an ELF executable (Sample-ELF)  machines to determine the CPU Architecture it was built for. 
+		○ Ghidra
+			§ Open ghidra.bat create a working folder import the ELF file read the summary for architecture
+	- Perform windows service monitoring and find out the service type associated with display name "afunix"
+		○ (Get-Service -Name "afunix").ServiceType
+	- DHCP starvation and finding the transaction id
+		○ Yersinia -G
+		○ Start attack-> DHCP->  Sending discover packets -> ok
+		○ Start wireshark 
+			§ Put filter for eth0
+			§ Get the transaction id
+	
+	
+	
