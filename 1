@@ -1,0 +1,21 @@
+	- Finding the geolocation for a website 
+		○ Ip void
+			§ https://www.ipvoid.com/ip-geolocation/
+	- To check whether zone transfer is enabled for a website or not
+		○ dig www.website.com axfr
+	- NMAP scan to find the host discovery | DNS | FQDN Name | NETBIOS NAME | DNS Computername | NFS Service enabled 
+		○ nmap -A ipaddress/24
+	- Perform LDAP enumeration on the target network and find out how many user accounts are associated with the domain.
+		○ ldapsearch -x -h 10.10.10.25 -b "DC=CEHORG,DC=com" "objectclass=user" cn
+		○ Don’t count guest user
+	- Finding the LDAP version 
+		○ ldapsearch -h 10.10.10.25 -x -s base namingcontexts
+	- DNS enumeration to find the nameservers 
+		○ dig ns domain.com
+	- Finding the severity and score 
+		○ https://nvd.nist.gov/vuln/
+	- Scanning in OpenVAS
+		○ open terminal
+			§ sudo gvm-start
+		○ add the target and initiate the scan
+	
