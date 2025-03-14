@@ -1,0 +1,95 @@
+Nmap command
+	- nmap -sC -sV -p- -O -v -A -T4 ip/24
+	
+RAT
+	- nJRAT (else)
+	- MoSucker
+	- ProRat (If password is given)
+	- Theef
+	- HTTP RAT (Else)
+
+	- Points to note
+		○ Finding the right ip
+			§ Target the windows machine running if ip not given
+			§ Port 
+				□ Try using default ports
+				□ Else check for any open ports other than the one for common services
+	- Once connection is created 
+	- Search for *.txt files
+	- Mostly not in the programfiles
+	- Check for user files
+
+DIE to find the entropy
+
+
+
+Service Enumeration
+	- FTP (21)
+		○ To connect
+			§ ftp 127.0.0.0
+		○ Bruteforcing
+			§ hydra
+				□ hydra -L /usernames.txt -P /passwords.txt 127.0.0.0 ftp
+		○ Download a file after connecting
+			§ get secret.txt
+	- SNMP
+		○ snmp-check 127.0.0.0
+		○ nmap -sU -p 161 --script=snmp-processes 127.0.0.0
+			§ 161 port was identified by snmp-check command
+		○ nmap -sU -p 161 --script=snmp-interfaces 127.0.0.0
+	- SMB
+		○ Finding smb shares
+			§ nmap -p 445 --script smb-enum-shares 127.0.0.0
+		○ Go to file manager -> network 
+			§ smb://127.0.0.0/
+		○ Enumerating users
+			§ nmap -p 445 --script smb-enum-users 127.0.0.0
+			§ nmap -p 445 --script smb-enum-users --script-args smbusername=administrator, smbpassword=smbserver_771 127.0.0.0
+		○ --script smb-enum-groups
+		○ to find message siginin and etc details
+			§ nmap -sC -sV -A -T4 -p445 127.0.0.0
+		○ --script smb-enum-services
+
+	- RDP (3389)
+		○ nmap to identify the open ports
+		○ msfconsole -q
+			§ search rdp
+			§ use auxiliary/scanner/rdp/rdp_scanner
+			§ show options
+			§ set RHOSTS
+			§ set RPORT
+			§ esploit
+		○ hydra -L /username.txt -P /password.txt edp://127.0.0.0 -s portno
+		○ Connecting
+			§ xfreerdp /u:administrator /p:qwerty  /v:127.0.0.0:portno
+	- NetBIOS (137/138/139)
+		○ nmap -sV --script nbstat.nse 127.0.0.0
+
+
+Wireshark
+	- Finding text files
+		○ File -> Export Objects -> HTTP -> click on content type -> save it and open
+
+
+Steganography
+	- SNOW.EXE (For txt files)
+		○ Encrypt
+			§ SNOW.EXE -C -m "message" =p "pa$$word" Secret.txt Op.txt
+		○ Decrypt
+			§ SNOW.EXE -C -p "password" op.txt
+	- Openstego (for image base steganography)
+		○ .exe
+	- hash decrypt
+		○ hashes.com
+
+
+	- Cryptography
+		○ Hashmyfiles - calculating and comparing hashes
+		○ cryptool - by keylength
+		○ BctextEncoder - text file encoding and decoding
+		○ CryptoForge - encrypting and decrypting files
+		○ VeraCrypt - Disk partitions
+	
+		
+		
+
