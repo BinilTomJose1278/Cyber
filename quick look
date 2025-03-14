@@ -68,7 +68,8 @@ Service Enumeration
 
 Wireshark
 	- Finding text files
-		○ File -> Export Objects -> HTTP -> click on content type -> save it and open
+		○ File -> Export Objects -> HTTP -> click on content typ
+e -> save it and open
 
 
 Steganography
@@ -89,7 +90,12 @@ Steganography
 		○ BctextEncoder - text file encoding and decoding
 		○ CryptoForge - encrypting and decrypting files
 		○ VeraCrypt - Disk partitions
-	
+	- SMB
+		- use auxilary/admin/smb/samba_symlink_traversal 
+      		- smbclient //127.0.0.0/folder
+			- cd rootfs
+			-ls
+
 		
 		
 
